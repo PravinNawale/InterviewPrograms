@@ -1,0 +1,17 @@
+1)
+
+SELECT player_name,count(*),country_name
+FROM goal_details a
+JOIN player_mast b ON a.player_id=b.player_id
+JOIN soccer_country c ON a.team_id=c.country_id
+WHERE goal_schedule = 'NT'
+GROUP BY player_name,country_name
+ORDER BY count(*) DESC;
+
+
+2)
+
+select countries.name, sum(goals) goal_count
+from countries join goals on countries.id = goals.country_id
+group by countries.name
+order by goal_count desc, countries.id
